@@ -1,0 +1,2 @@
+# .NET-course
+ITAcademy exercises
