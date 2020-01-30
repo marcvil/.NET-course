@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\formacio\\Documents\\GitHub\\.NET-course\\Bloc C# y Java\\Bloc introudcció a variables\\Actividad 4 C#\\A4 CSharp y Java\\A4 CSharp y Java\\A4 CSharp y Java.csproj",
-      "projectName": "A4 CSharp y Java",
-      "projectPath": "C:\\Users\\formacio\\Documents\\GitHub\\.NET-course\\Bloc C# y Java\\Bloc introudcció a variables\\Actividad 4 C#\\A4 CSharp y Java\\A4 CSharp y Java\\A4 CSharp y Java.csproj",
+      "projectUniqueName": "C:\\Users\\formacio\\Documents\\GitHub\\.NET-course\\Bloc C# y Java\\Bloc exercici lletres\\Bloc 2 - Actividad 2\\Bloc 2 - Actividad 2\\Bloc 2 - Actividad 2.csproj",
+      "projectName": "Bloc 2 - Actividad 2",
+      "projectPath": "C:\\Users\\formacio\\Documents\\GitHub\\.NET-course\\Bloc C# y Java\\Bloc exercici lletres\\Bloc 2 - Actividad 2\\Bloc 2 - Actividad 2\\Bloc 2 - Actividad 2.csproj",
       "packagesPath": "C:\\Users\\formacio\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\formacio\\Documents\\GitHub\\.NET-course\\Bloc C# y Java\\Bloc introudcció a variables\\Actividad 4 C#\\A4 CSharp y Java\\A4 CSharp y Java\\obj\\",
+      "outputPath": "C:\\Users\\formacio\\Documents\\GitHub\\.NET-course\\Bloc C# y Java\\Bloc exercici lletres\\Bloc 2 - Actividad 2\\Bloc 2 - Actividad 2\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\formacio\\AppData\\Roaming\\NuGet\\NuGet.Config",
