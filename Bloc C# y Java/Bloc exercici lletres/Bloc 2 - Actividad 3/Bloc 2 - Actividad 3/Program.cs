@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Bloc_2___Actividad_2
+namespace Bloc_2___Actividad_3
 {
     class Program
     {
@@ -13,8 +13,10 @@ namespace Bloc_2___Actividad_2
             // Input usuario
             string inputString = Console.ReadLine();
 
-            //Crear Lista y temporary array para separar las letras
-            List<string> letterNameList = new List<string>();
+            //Crear dictionary y temporary array para separar las letras
+
+            IDictionary<int, string> dictionaryletters = new Dictionary<int, string>();
+
             char[] temp = new char[inputString.Length];
 
             //letras en array
@@ -24,17 +26,15 @@ namespace Bloc_2___Actividad_2
             int i = 0;
             for (i = 0; i < inputString.Length; i++)
             {
-                letterNameList.Add(Convert.ToString(temp[i]));
-
+                dictionaryletters.Add(i, temp[i].ToString());
             }
 
             /* letterNameList.ForEach(i => Console.Write("{0}\t" + "\n", i));     Manera Sencilla, no entiendo muy bien como fnciona el operador =>    */
 
-            
-            ManagingLetters(letterNameList);
+            ManagingLetters(dictionaryletters);
         }
 
-        private static void ManagingLetters(List<string> letterNameList)
+        private static void ManagingLetters(IDictionary<int, string> dictionaryletters)
         {
             //for loop para comparar letras en la lista con array de vocales,  NO TIENE EN CUENTA ACENTOS!!!!!
             string[] vocals = new string[5];
@@ -44,24 +44,23 @@ namespace Bloc_2___Actividad_2
             vocals[3] = "o";
             vocals[4] = "u";
 
-
-            for (int j = 0; j < letterNameList.Count; j++)
+            for (int j = 0; j < dictionaryletters.Count; j++)
             {
                 for (int k = 0; k < vocals.Length; k++)
                 {
-                    if (vocals[k] == letterNameList[j])
+                    if (vocals[k] == dictionaryletters[j])
                     {
-                        Console.Write(letterNameList[j] + " es vocal" + "\n");
+                        Console.Write(dictionaryletters[j] + " es vocal" + "\n");
                         break;
                     }
-                    if (vocals[k] != letterNameList[j] && k == (vocals.Length - 1))
+                    if (vocals[k] != dictionaryletters[j] && k == (vocals.Length - 1))
                     {
-                        Console.Write(letterNameList[j] + " no es una vocal." + "\n");
+                        Console.Write(dictionaryletters[j] + " no es una vocal." + "\n");
                         break;
                     }
-                    if (vocals[k].GetType() != letterNameList[j].GetType())
+                    if (vocals[k].GetType() != dictionaryletters[j].GetType())
                     {
-                        Console.Write(letterNameList[j] + " no es una letra!" + "\n");
+                        Console.Write(dictionaryletters[j] + " no es una letra!" + "\n");
                         break;
                     }
                 }
@@ -69,3 +68,4 @@ namespace Bloc_2___Actividad_2
         }
     }
 }
+
