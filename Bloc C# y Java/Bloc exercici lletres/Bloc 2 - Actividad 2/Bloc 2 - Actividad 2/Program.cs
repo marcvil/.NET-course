@@ -28,7 +28,7 @@ namespace Bloc_2___Actividad_2
 
             }
 
-            /* letterNameList.ForEach(i => Console.Write("{0}\t" + "\n", i));     Manera Sencilla, no entiendo muy bien como fnciona el operador =>    */
+            /* letterNameList.ForEach(i => Console.Write("{0}\t" + "\n", i));     Output por consoloa Manera Sencilla, no entiendo muy bien como fnciona el operador =>    */
 
             
             ManagingLetters(letterNameList);
@@ -66,6 +66,26 @@ namespace Bloc_2___Actividad_2
                     }
                 }
             }
+
+            /*a PARTIR DE FOREACH LOOP Y CON FOR LOOP DENTRO
+
+           foreach (string c in letterNameList)
+           {
+               for (int k = 0; k < vocals.Length; k++)
+               {
+                   if (vocals[k] == c)
+                   {
+                       Console.Write(c + " es vocal" + "\n");
+                       break;
+                   }
+                   if (vocals[k] != c && k == vocals.Length - 1)
+                   {
+                       Console.Write(c + " no es vocal" + "\n");
+                       break;
+                   }
+               }
+           }
+          */
         }
     }
 }
