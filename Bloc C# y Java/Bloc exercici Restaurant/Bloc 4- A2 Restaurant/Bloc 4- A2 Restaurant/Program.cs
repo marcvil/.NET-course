@@ -24,6 +24,7 @@ namespace Bloc_4__A2_Restaurant
             PedirListaCliente(listaMenu, listaCliente);
             ConfirmarPedido(listaMenu, listaCliente);
             precioTotal = MostrarPrecio(precioTotal, listaMenu, listaPrecios, listaCliente);
+            Console.WriteLine("ELPRECIO TOTAL ES DE" + precioTotal);
             GestionarBilletes(billete5Valor, billete10Valor, billete20Valor, billete50Valor, billete100Valor, billete200Valor, billete500Valor, ref numbillete5, numbillete10, ref numbillete20, ref numbillete50, ref numbillete100, ref numbillete200, ref numbillete500,  precioTotal);
         }
 
@@ -100,10 +101,7 @@ namespace Bloc_4__A2_Restaurant
                     {
                         precioTotal += listaPrecios[i];
                     }
-                    else
-                    {
-                        continue;
-                    }
+                    
                 }
             }
             
