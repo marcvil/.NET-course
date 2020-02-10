@@ -35,43 +35,43 @@ namespace Bloc_4__A2_Restaurant
             Console.WriteLine(precioTotal);
             while (precioTotal >= 5)
             {
-                if (precioTotal / billete500Valor >= 1)
+                if (precioTotal / billete500Valor >= 1 && precioTotal>= 500)
                 {
                     numbillete500++;
                     precioTotal -= billete500Valor;
                     continue;
                 }
-                if (precioTotal / billete200Valor >= 1)
+                else if (precioTotal / billete200Valor >= 1 && precioTotal >= 200)
                 {
                     numbillete200++;
                     precioTotal -= billete200Valor;
                     continue;
                 }
-                if (precioTotal / billete100Valor >= 1)
+                else if(precioTotal / billete100Valor >= 1 && precioTotal >= 100)
                 {
                     numbillete100++;
                     precioTotal -= billete100Valor;
                     continue;
                 }
-                if (precioTotal / billete50Valor >= 1)
+                else if(precioTotal / billete50Valor >= 1 && precioTotal >= 50)
                 {
                     numbillete50++;
                     precioTotal -= billete50Valor;
                     continue;
                 }
-                if (precioTotal / billete20Valor >= 1)
+                else if(precioTotal / billete20Valor >= 1 && precioTotal >= 20)
                 {
                     numbillete20++;
                     precioTotal -= billete20Valor;
                     continue;
                 }
-                if (precioTotal / billete10Valor >= 1)
+                else if(precioTotal / billete10Valor >= 1 && precioTotal >= 10)
                 {
                     numbillete500++;
                     precioTotal -= billete10Valor;
                     continue;
                 }
-                if (precioTotal / billete5Valor >= 1)
+                else if (precioTotal / billete5Valor >= 1 && precioTotal >= 5)
                 {
                     numbillete5++;
                     precioTotal -= billete5Valor;
