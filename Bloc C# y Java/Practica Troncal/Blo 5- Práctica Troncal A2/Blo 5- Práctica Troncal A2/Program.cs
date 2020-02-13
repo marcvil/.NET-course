@@ -10,6 +10,11 @@ namespace Blo_5__Práctica_Troncal_A2
             int option;
             bool looping = true;
             Dictionary<string, float> listaNotas = new Dictionary<string, float>();
+           
+            Dictionary<int, Persona> listaStudent = new Dictionary<int, Persona>();
+            Dictionary<Persona,List<Subject>> listaSubject;
+
+            Dictionary<Subject, Exam> listaExam;
 
             Console.WriteLine("Hola Profesor! Esta es una aplicación para ayudarte a analizar las notas de tus alumnos.");
 
@@ -21,20 +26,20 @@ namespace Blo_5__Práctica_Troncal_A2
 
                 if (option == 1)
                 {
-                    AñadirNotas(listaNotas);
+                    AñadirStudent(listaStudent);
                     Console.Clear();
                     ShowMainMenu();
 
                 }
                 else if (option == 2)
                 {
-                    MuestraNotas(listaNotas);
 
+                    MuestraAlumnos(listaStudent);
                     ShowMainMenu();
                 }
                 else if (option == 3)
                 {
-                    AnalisisDatos(listaNotas);
+                   
                 }
                 else if (option == 4)
                 {
@@ -92,42 +97,75 @@ namespace Blo_5__Práctica_Troncal_A2
             }
             ShowMainMenu();
         }
-        static Dictionary<string, float> AñadirNotas(Dictionary<string, float> listaNotas)
+        static Dictionary<int, Persona> AñadirStudent(Dictionary<int, Persona> listaStudent)
         {
             Console.Clear();
-            Dictionary<string, float> listaNotasTemporal = new Dictionary<string, float>();
-            listaNotasTemporal = listaNotas;
-            int studentNumber = 1;
+            int studentNumber = listaStudent.Count;
             int option2 = 1;
             while (option2 == 1)
             {
-                Console.WriteLine("Entra el nombre del alumno " + studentNumber);
+
+                Console.WriteLine("Entra el nombre del alumno " + (studentNumber + 1));
                 string nombreAlumno = ReadIsString();
-                Console.WriteLine("Entra la nota del alumno. Utiliza una coma para los decimales!!");
-                float nota = EntradaFloatPorConsola();
-                listaNotasTemporal.Add(nombreAlumno, nota);
+                Console.WriteLine("Entra la edad de " + nombreAlumno);
+                int age = EntradaIntPorConsola();
+                Console.WriteLine("Entra su DNI. NO Hace falta letra.");
+                int dni = EntradaIntDNIPorConsola();
+                Persona student = new Persona(nombreAlumno, age, dni);
+                listaStudent.Add(dni, student);
                 studentNumber++;
 
                 Console.WriteLine("¿Quieres seguir añadiendo notas? Pulsa 1 para seguir y 0 para salir.");
                 option2 = EntradaIntPorConsola();
                 Console.Clear();
             }
-
-            return listaNotasTemporal;
+            return listaStudent;
         }
 
-        static void MuestraNotas(Dictionary<string, float> listaNotas)
+        static void AñadirSubjectAStudent(Dictionary<int, Persona> listaStudent)
         {
+            Console.WriteLine("Entra el dni del alumno. Si quieres salir escribe 00000000");
+            int dniId = EntradaIntDNIPorConsola();
 
-            Console.WriteLine("Esta es la lista de las notas hasta el momento.");
-            foreach (KeyValuePair<string, float> notaAlumno in listaNotas)
+            Persona student;
+           if (listaStudent.ContainsKey(dniId))
             {
-                Console.WriteLine("Nombre: {0}, Nota: {1}", notaAlumno.Key, notaAlumno.Value);
+                student = listaStudent[dniId];
             }
-            Console.WriteLine("Pulsa cualquier tecla para continuar");
-            Console.ReadKey();
-            Console.Clear();
+            else
+            {
+                Console.WriteLine("El dni no existe. Vuelve a entrarlo");
+                AñadirSubjectAStudent(listaStudent);
+                return;
+            }
+            Dictionary<Persona, List<Subject>> listaSubject = new Dictionary<Persona, List<Subject>>();
+
+            int option = 1;
+            while(option == 1)
+            {
+                Console.WriteLine("Escribe el nombre de la asignatura que cursa el alumno.");
+                string subjectName = Console.ReadLine();
+                Console.WriteLine("Escribe el Id de la asignatura.");
+                int subjectId = EntradaIntPorConsola();
+                Subject subject = new Subject(subjectId, subjectName);
+
+                listaSubject.Add(student, subject);
+            }
+
+
         }
+         static void MuestraAlumnos(Dictionary<int, Persona> listaStudent)
+         {
+         Console.WriteLine("Esta es la lista alumnos en el sistema");
+         foreach (KeyValuePair<int, Persona> student in listaStudent)
+         {
+               Console.WriteLine(student.Key);
+               Console.WriteLine(student.Value.ShowPersonInfo());
+         }
+               Console.WriteLine("Pulsa cualquier tecla para continuar");
+               Console.ReadKey();
+               Console.Clear();
+         }
         #endregion
 
         #region Text Menus
@@ -216,13 +254,43 @@ namespace Blo_5__Práctica_Troncal_A2
 
         #region funciones Input 
 
+        static int EntradaIntDNIPorConsola()
+        {
+            int input;
+            bool parseCheck = Int32.TryParse(Console.ReadLine(), out input);
 
+
+            //Clause to see if it's really an int and 8 digits, else repeat the function
+            if (parseCheck is true && input.ToString().Length == 8)
+            {
+                return input;
+            }
+            else
+            {
+                Console.WriteLine("No es un número o no tiene 8 dígitos. Vuelve a introducir");
+                EntradaIntPorConsola();
+                return 0;
+            }
+
+        }
         static int EntradaIntPorConsola()
         {
-            int input = Int32.Parse(Console.ReadLine());
+            int input;
+            bool parseCheck = Int32.TryParse(Console.ReadLine(), out input);
 
 
-            return input;
+            //Clause to see if it's really an int, else repeat the function
+            if (parseCheck is true ) 
+            {
+                return input;
+            }
+            else
+            {
+                Console.WriteLine("No es un número. Vuelve a introducir el dato.");
+                EntradaIntPorConsola();
+                return 0;
+            }
+            
         }
         static float EntradaFloatPorConsola()
         {

@@ -25,11 +25,13 @@ namespace Blo_5__Práctica_Troncal_A2
             this.dni = dni;
         }
 
-        public void ShowInfo()
+        public string ShowPersonInfo()
         {
-            Console.WriteLine("método: la persona con nombre " + name
-                    + " que tiene " + age + " años"
-                    + " y que tiene el siguiente dni: " + dni);
+            string phrase = ("Nombre: " + name + "\n"
+                    + "Edad:" + age + " años" + "\n"
+                    + "DNI: " + dni);
+
+            return phrase;
         }
 
 
