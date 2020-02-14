@@ -39,7 +39,7 @@ namespace Blo_5__Práctica_Troncal_A2
                 }
                 else if (option == 3)
                 {
-                   
+                    AñadirStudent(listaStudent);
                 }
                 else if (option == 4)
                 {
@@ -122,7 +122,7 @@ namespace Blo_5__Práctica_Troncal_A2
             return listaStudent;
         }
 
-        static void AñadirSubjectAStudent(Dictionary<int, Persona> listaStudent)
+        static Dictionary<Persona, List<Subject>> AñadirSubjectAStudent(Dictionary<int, Persona> listaStudent)
         {
             Console.WriteLine("Entra el dni del alumno. Si quieres salir escribe 00000000");
             int dniId = EntradaIntDNIPorConsola();
@@ -134,24 +134,26 @@ namespace Blo_5__Práctica_Troncal_A2
             }
             else
             {
-                Console.WriteLine("El dni no existe. Vuelve a entrarlo");
+                Console.WriteLine("El dni no existe. Vuelve a entrarlo.");
                 AñadirSubjectAStudent(listaStudent);
                 return;
             }
             Dictionary<Persona, List<Subject>> listaSubject = new Dictionary<Persona, List<Subject>>();
 
             int option = 1;
-            while(option == 1)
+            List<Subject> subjectList = new List<Subject>();
+            listaSubject.Add(student, subjectList);
+            while (option == 1)
             {
                 Console.WriteLine("Escribe el nombre de la asignatura que cursa el alumno.");
                 string subjectName = Console.ReadLine();
                 Console.WriteLine("Escribe el Id de la asignatura.");
                 int subjectId = EntradaIntPorConsola();
                 Subject subject = new Subject(subjectId, subjectName);
-
-                listaSubject.Add(student, subject);
+                subjectList.Add(subject);
+                Console.WriteLine("Quieres añadir más asignaturas? Pulsa 1 o, en el caso contrario, pulsa 0 para salir.");
             }
-
+            return listaSubject;
 
         }
          static void MuestraAlumnos(Dictionary<int, Persona> listaStudent)
@@ -166,6 +168,18 @@ namespace Blo_5__Práctica_Troncal_A2
                Console.ReadKey();
                Console.Clear();
          }
+        static void MuestraAsignaturasdeAlumno(Dictionary<Persona, List<Subject>> listaStudent)
+        {
+            Console.WriteLine("Esta es la lista alumnos en el sistema");
+            foreach (KeyValuePair<int, Persona> student in listaStudent)
+            {
+                Console.WriteLine(student.Key);
+                Console.WriteLine(student.Value.ShowPersonInfo());
+            }
+            Console.WriteLine("Pulsa cualquier tecla para continuar");
+            Console.ReadKey();
+            Console.Clear();
+        }
         #endregion
 
         #region Text Menus
