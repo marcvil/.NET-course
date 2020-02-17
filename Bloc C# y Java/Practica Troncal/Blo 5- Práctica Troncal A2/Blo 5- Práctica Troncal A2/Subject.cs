@@ -6,7 +6,7 @@ namespace Blo_5__Práctica_Troncal_A2
     public class Subject
     {
         int idSubject { get; set; }
-        string subjectName { get; set; }
+        public string subjectName;
 
         public Subject()
         {

@@ -41,10 +41,10 @@ namespace Blo_5__Práctica_Troncal_A2
                 }
                 else if (option == 3)
                 {
-                    AñadirSubjectAStudent(listaStudent);
-                    Dictionary<Persona, List<Subject>> listaSubjectTemporary = new Dictionary<Persona, List<Subject>>();
-                    listaSubjectTemporary= AñadirSubjectAStudent(listaStudent);
-                    listaSubjectList.Add(listaSubjectTemporary);
+                    // AñadirSubjectAStudent(listaStudent);
+                    // Dictionary<Persona, List<Subject>> listaSubjectTemporary = new Dictionary<Persona, List<Subject>>();
+                    // listaSubjectTemporary= AñadirSubjectAStudent(listaStudent);
+                    listaSubjectList.Add(AñadirSubjectAStudent(listaStudent));
                     ShowMainMenu();
                 }
                 else if (option == 4)
@@ -52,6 +52,7 @@ namespace Blo_5__Práctica_Troncal_A2
                     MuestraAsignaturasdeAlumno(listaStudent,listaSubjectList);
                     Console.Clear();
                     ShowMainMenu();
+
                 }
                 else
                 {
@@ -150,7 +151,6 @@ namespace Blo_5__Práctica_Troncal_A2
                 
             }
           
-
             int option = 1;
             List<Subject> subjectList = new List<Subject>();
             listaSubject.Add(student, subjectList);
@@ -161,10 +161,10 @@ namespace Blo_5__Práctica_Troncal_A2
                 Console.WriteLine("Escribe el Id de la asignatura.");
                 int subjectId = EntradaIntPorConsola();
                 Subject subject = new Subject(subjectId, subjectName);
+                
+                subjectList.Add(subject);
                 Console.WriteLine("Quieres añadir más asignaturas? Pulsa 1 o, en el caso contrario, pulsa 0 para salir.");
                 option = EntradaIntPorConsola();
-                subjectList.Add(subject);
-                
                 Console.Clear();
             }
             return listaSubject;
@@ -189,7 +189,7 @@ namespace Blo_5__Práctica_Troncal_A2
             int dniId = EntradaIntDNIPorConsola();
 
             Persona persona = new Persona();
-           if( listaStudent.ContainsKey(dniId)){
+            if( listaStudent.ContainsKey(dniId)){
                 persona = listaStudent[dniId];
             }
             else
@@ -207,13 +207,14 @@ namespace Blo_5__Práctica_Troncal_A2
                     listaSubjectTemp = listaSubjectList[i];
 
                     List<Subject> Templist = listaSubjectTemp[persona];
-                    for (int j = 0; j< Templist.Count; j++) 
+                    foreach( Subject s in Templist) 
                     {
-                        Console.WriteLine(Templist[j]);
+                        Console.WriteLine(s.subjectName);
                     }
                 }
             }
 
+            Console.ReadKey();
 
                
         }
@@ -320,7 +321,7 @@ namespace Blo_5__Práctica_Troncal_A2
             {
                 Console.WriteLine("No es un número o no tiene 8 dígitos. Vuelve a introducir");
                 EntradaIntPorConsola();
-                return 0;
+                return input;
             }
 
         }
