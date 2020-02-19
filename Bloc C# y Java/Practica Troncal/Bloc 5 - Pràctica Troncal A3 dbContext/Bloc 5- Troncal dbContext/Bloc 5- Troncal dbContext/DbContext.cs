@@ -7,7 +7,8 @@ namespace Troncal_DbContext
     {
        public static Dictionary<int, Persona> listaStudent = new Dictionary<int, Persona>();
 
-         public static void AñadirStudent()
+        #region Añadir,Modificar, eliminar Students
+        public static void AñadirStudent()
         {
             Console.Clear();
             
@@ -85,22 +86,11 @@ namespace Troncal_DbContext
             }
 
         }
+        #endregion
 
 
-        public static void MuestraAlumnos()
-        {
-            Console.WriteLine("Esta es la lista alumnos en el sistema");
-            foreach (KeyValuePair<int, Persona> student in listaStudent)
-            {
-                Console.WriteLine(student.Key);
-                Console.WriteLine(student.Value.ShowPersonInfo());
-            }
-            Console.WriteLine("Pulsa cualquier tecla para continuar");
-            Console.ReadKey();
-            Console.Clear();
-        }
-
-       public static void AñadirSubjectyNotas()
+        #region Añadir subjects, modificar y eliminar subjects
+        public static void AñadirSubjectyNotas()
         {
             Persona alumno = Input.BuscarAlumnoPorDni(listaStudent);
             Dictionary<Subject, List<Exam>> listaSubjectExam = new Dictionary<Subject, List<Exam>>();
@@ -134,7 +124,92 @@ namespace Troncal_DbContext
 
             return subj;
         }
+        public static void ModifyAsignatura()
+        {
+            Persona alumno = Input.BuscarAlumnoPorDni(listaStudent);
 
+            Console.WriteLine("Vas a cambiar los datos del alumno: " + alumno.Name + "\n" +
+                                "que esta cursando las asignaturas siguientes: "
+                                );
+            MuestraSubject();
+            Console.WriteLine("Entra el nombre de la asignatura que quieres cambiar.");
+            string str = Console.ReadLine();
+
+            foreach (KeyValuePair<Subject, List<Exam>> c in alumno.ListaExam)
+            {
+                if (c.Key.SubjectName == str)
+                {
+                    Console.WriteLine("Vas a cambiar los datos de la asignaturas: " + c.Key.SubjectName + "\n" +
+                                "Está seguro que quiere cambiarla? Pulse 1 para continuar o 0 para cancelar."
+                                );
+                    int option = Input.EntradaIntPorConsola();
+                    if (option == 1)
+                    {
+                        Console.WriteLine("Entra el nuevo nombre de la asignatura ");
+                        c.Key.SubjectName = Input.ReadIsString();
+                        Console.WriteLine("Entra la nueva edad del alumno.");
+                        c.Key.IdSubject = Input.EntradaIntPorConsola();
+
+                        Console.WriteLine("La operación se ha realizado correctamente.");
+
+
+                    }
+                    else if (option == 0)
+                    {
+                        Console.WriteLine("La operación se ha cancelado.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("No has entrado correctamente el número. Se cancelará la operación.");
+
+                    }
+
+
+                }
+            }
+          
+        }
+        public static void EliminateAsignatura()
+        {
+            Persona alumno = Input.BuscarAlumnoPorDni(listaStudent);
+
+            Console.WriteLine("Vas a cambiar los datos del alumno: " + alumno.Name + "\n" +
+                                "que esta cursando las asignaturas siguientes: "
+                                );
+            MuestraSubject();
+            Console.WriteLine("Entra el nombre de la asignatura que quieres eliminar.");
+            string str = Console.ReadLine();
+
+            foreach (KeyValuePair<Subject, List<Exam>> c in alumno.ListaExam)
+            {
+                if (c.Key.SubjectName == str)
+                {
+                    Console.WriteLine("Vas a eliminar los datos de la asignatura: " + c.Key.SubjectName + " junto a las notas asociadas \n" +
+                                "Está seguro que quiere eliminarla? Pulse 1 para continuar o 0 para cancelar."
+                                );
+                    int option = Input.EntradaIntPorConsola();
+                    if (option == 1)
+                    {
+                        alumno.ListaExam.Clear();
+                    }
+                    else if (option == 0)
+                    {
+                        Console.WriteLine("La operación se ha cancelado.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("No has entrado correctamente el número. Se cancelará la operación.");
+
+                    }
+
+
+                }
+            }
+
+        }
+        #endregion 
+
+        #region Crear,Modificar y eliminar Lista examenes
         public static List<Exam> CrearListaExamenes()
         {
             int option = 1;
@@ -157,7 +232,99 @@ namespace Troncal_DbContext
             return listaNotasExamen;
 
         }
+        public static void ModifyListaExamenes()
+        {
+            Persona alumno = Input.BuscarAlumnoPorDni(listaStudent);
 
+            Console.WriteLine("Vas a cambiar los datos del alumno: " + alumno.Name + "\n" +
+                                "que esta cursando las asignaturas siguientes: "
+                                );
+            MuestraSubject();
+            MuestraNotas();
+            Console.WriteLine("Entra el nombre de la asignatura que quieres cambiar.");
+           
+            string str = Console.ReadLine();
+
+            foreach (KeyValuePair<Subject, List<Exam>> c in alumno.ListaExam)
+            {
+                if (c.Key.SubjectName == str)
+                {
+
+                    Console.WriteLine("Vas a cambiar los datos de la asignaturas: " + c.Key.SubjectName);
+
+                         
+                    int option = Input.EntradaIntPorConsola();
+                    if (option == 1)
+                    {
+                        Console.WriteLine("Entra el nuevo nombre de la asignatura ");
+                        c.Key.SubjectName = Input.ReadIsString();
+                        Console.WriteLine("Entra la nueva edad del alumno.");
+                        c.Key.IdSubject = Input.EntradaIntPorConsola();
+
+                        Console.WriteLine("La operación se ha realizado correctamente.");
+
+                    }
+                    else if (option == 0)
+                    {
+                        Console.WriteLine("La operación se ha cancelado.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("No has entrado correctamente el número. Se cancelará la operación.");
+
+                    }
+
+
+                }
+            }
+        }
+        public static List<Exam> EliminarListaExamenes()
+        {
+            int option = 1;
+            int numExam = 1;
+            List<Exam> listaNotasExamen = new List<Exam>();
+            while (option == 1)
+            {
+                Exam exam = new Exam();
+                Console.WriteLine("Añade la nota del examen número: " + numExam);
+                exam.FinalMark = Input.EntradaFloatPorConsola();
+                Console.WriteLine("Añade el Id del examen");
+                exam.ExamId = Input.EntradaIntPorConsola();
+                listaNotasExamen.Add(exam);
+
+                Console.WriteLine("Quieres añadir más EXAMENES? Pulsa 1 para añadir o 0 para salir.");
+                option = Input.EntradaIntPorConsola();
+
+            }
+
+            return listaNotasExamen;
+
+        }
+        #endregion
+
+
+        #region  Métodos Mostrar
+        public static void MuestraSubject()
+        {
+            Persona alumno = Input.BuscarAlumnoPorDni(listaStudent);
+
+            Console.WriteLine("El alumno esta cursando las siguientes asignaturas.");
+
+            foreach (Subject s in alumno.ListaExam.Keys)
+            {
+                if (alumno.ListaExam.Keys == null)
+                {
+                    Console.WriteLine("Aún no has entrado asignaturas.");
+                    return;
+                }
+                else
+                {
+                    Console.WriteLine("Nombre Asignatura = {0}, Id Asignatura = {1}", s.SubjectName, s.IdSubject);
+
+                }
+            }
+           
+        }
         public static void MuestraNotas()
         {
             Persona alumno = Input.BuscarAlumnoPorDni(listaStudent);
@@ -166,9 +333,17 @@ namespace Troncal_DbContext
 
             foreach (Subject s in alumno.ListaExam.Keys)
             {
-                Console.WriteLine("Nombre Asignatura = {0}, Id Asignatura = {1}", s.SubjectName, s.IdSubject);
-            }
+                if (alumno.ListaExam.Keys == null)
+                {
+                    Console.WriteLine("Aún no has entrado asignaturas.");
+                    return;
+                }
+                else
+                {
+                    Console.WriteLine("Nombre Asignatura = {0}, Id Asignatura = {1}", s.SubjectName, s.IdSubject);
 
+                }
+            }
             Console.WriteLine("Entra el nombre de la asignatura que quieres mirar las notas.");
             string str = Console.ReadLine();
 
@@ -184,7 +359,19 @@ namespace Troncal_DbContext
             }
 
         }
-
+        public static void MuestraAlumnos()
+        {
+            Console.WriteLine("Esta es la lista alumnos en el sistema");
+            foreach (KeyValuePair<int, Persona> student in listaStudent)
+            {
+                Console.WriteLine(student.Key);
+                Console.WriteLine(student.Value.ShowPersonInfo());
+            }
+            Console.WriteLine("Pulsa cualquier tecla para continuar");
+            Console.ReadKey();
+            Console.Clear();
+        }
+        #endregion
         static void ShowMenuChangeStudentInfo()
         {
             Console.WriteLine("Elige una opción de las siguientes: ");

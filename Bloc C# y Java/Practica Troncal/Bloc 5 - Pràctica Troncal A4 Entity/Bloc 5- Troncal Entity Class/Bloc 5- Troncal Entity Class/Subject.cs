@@ -1,5 +1,5 @@
 ﻿using System;
-namespace Troncal_DbContext
+namespace Troncal_EntityClass
 {
     public class Subject
     {

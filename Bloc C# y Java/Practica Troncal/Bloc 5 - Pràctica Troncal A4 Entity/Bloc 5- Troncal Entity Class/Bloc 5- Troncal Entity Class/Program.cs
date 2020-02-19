@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Troncal_DbContext
+namespace Troncal_EntityClass
 {
     class Program
     {
@@ -10,7 +10,7 @@ namespace Troncal_DbContext
             int option;
             bool looping = true;
 
-       
+            //Dictionary<int, Persona> listaStudent = new Dictionary<int, Persona>();
 
 
             Console.WriteLine("Hola Profesor! Esta es una aplicación para ayudarte a analizar las notas de tus alumnos.");
@@ -68,31 +68,7 @@ namespace Troncal_DbContext
                 }
                 else if (option == 7)
                 {
-                    DbContext.MuestraSubject();
-                    Console.WriteLine("Pulsa cualquier botón para continuar.");
-                    Console.ReadKey();
-                    Console.Clear();
-                    ShowMainMenu();
-                }
-                else if (option == 8)
-                {
                     DbContext.MuestraNotas();
-                    Console.WriteLine("Pulsa cualquier botón para continuar.");
-                    Console.ReadKey();
-                    Console.Clear();
-                    ShowMainMenu();
-                }
-                else if (option == 9)
-                {
-                    DbContext.ModifyAsignatura();
-                    Console.WriteLine("Pulsa cualquier botón para continuar.");
-                    Console.ReadKey();
-                    Console.Clear();
-                    ShowMainMenu();
-                }
-                else if (option == 10)
-                {
-                    DbContext.EliminateAsignatura();
                     Console.WriteLine("Pulsa cualquier botón para continuar.");
                     Console.ReadKey();
                     Console.Clear();
@@ -116,13 +92,10 @@ namespace Troncal_DbContext
             Console.WriteLine("1. Añadir alumno.");
             Console.WriteLine("2. Mostrar alumnos.");
             Console.WriteLine("3. Añadir subjects a alumno.");
-            Console.WriteLine("4. Muestra alumnos.");
+            Console.WriteLine("4. Muestra Notas de un alumno.");
             Console.WriteLine("5. Modifica datos de los alumnos.");
             Console.WriteLine("6. Elimina a un alumno.");
-            Console.WriteLine("7. Muestra Asignaturas de un alumno.");
-            Console.WriteLine("8. Muestra Notas de una asignatura de un alumno.");
-            Console.WriteLine("9. Modificar Asignatura");
-            Console.WriteLine("10. Eliminar Asignatura y sus examenes.");
+
         }
         static void ShowAnalisisMenu()
         {
