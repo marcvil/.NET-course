@@ -6,7 +6,7 @@ namespace Troncal_DbContext
     {
 
         public string Name { get => name; set => name = value; }
-       public  int Age { get => age; set => age = value; }
+        public  int Age { get => age; set => age = value; }
         public int Dni { get => dni; set => dni = value; }
         public Dictionary<Subject, List<Exam>> ListaExam { get => listaExam; set => listaExam = value; }
 
