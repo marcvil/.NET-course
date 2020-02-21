@@ -73,20 +73,23 @@ namespace Bloc_5___Pràctica_Troncal_A3_dbContext_v2
                 if (option == 1) 
                 {
                     Console.Clear();
-                    Console.WriteLine("Hola");
+                    //TODO CreateStudent()
                    
                 }
                 else if (option == 2)
                 {
-
+                    Console.Clear();
+                    //TODO ReadStudent()
                 }
                 else  if (option == 3)
                 {
-
+                    Console.Clear();
+                    //TODO UpdateStudent()
                 }
                 else if (option == 4)
                 {
-
+                    Console.Clear();
+                    //TODO DeleteStudent()
                 }
                 else if (option == 5)
                 {
@@ -116,19 +119,21 @@ namespace Bloc_5___Pràctica_Troncal_A3_dbContext_v2
 
                 if (option == 1)
                 {
-
+                    Console.Clear();
+                    //TODO CreateAsignatura()
                 }
                 else if (option == 2)
                 {
-
+                    Console.Clear();
+                    //TODO ReadAsignatura()
                 }
                 else if (option == 3)
                 {
-
+                    //TODO UpdateAsignatura()
                 }
                 else if (option == 4)
                 {
-
+                    //TODO DeleteAsignatura()
                 }
                 else if (option == 5)
                 {
@@ -159,19 +164,19 @@ namespace Bloc_5___Pràctica_Troncal_A3_dbContext_v2
                 if (option == 1)
                 {
                     Console.Clear();
-                    Console.WriteLine("Hola");
+                    //TODO CreateExam()
                 }
                 else if (option == 2)
                 {
-
+                    //TODO ReadExam()
                 }
                 else if (option == 3)
                 {
-
+                    //TODO UpdateExam()
                 }
                 else if (option == 4)
                 {
-
+                    //TODO DeleteExam()
                 }
                 else if (option == 5)
                 {
