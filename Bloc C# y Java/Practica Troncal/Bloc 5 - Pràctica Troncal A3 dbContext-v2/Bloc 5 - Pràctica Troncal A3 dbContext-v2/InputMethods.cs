@@ -21,11 +21,8 @@ namespace Bloc_5___Pràctica_Troncal_A3_dbContext_v2
             {
                 return null;
             }
-            
-            
         }
-        
-        
+
         public static int InputDNI()
         {
             int input;

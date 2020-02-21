@@ -10,9 +10,6 @@ namespace Troncal_DbContext
             int option;
             bool looping = true;
 
-       
-
-
             Console.WriteLine("Hola Profesor! Esta es una aplicación para ayudarte a analizar las notas de tus alumnos.");
 
             ShowMainMenu();

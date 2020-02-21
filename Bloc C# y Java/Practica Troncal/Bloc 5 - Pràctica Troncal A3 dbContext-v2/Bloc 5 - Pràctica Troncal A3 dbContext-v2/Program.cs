@@ -10,25 +10,26 @@ namespace Bloc_5___Pràctica_Troncal_A3_dbContext_v2
             bool looping = true;
 
             Console.WriteLine("Hola Profesor! Esta es una aplicación para ayudarte a analizar las notas de tus alumnos.");
-
             ShowMainMenu();
-
             while (looping)
             {
                 option = Input.InputInt();
 
                 if (option == 1)
                 {
-                   
+                    Console.Clear();
+                    ShowStudentsManagementMenu();
+                    Console.Clear();
+                    ShowMainMenu();
 
                 }
                 else if (option == 2)
                 {
-                    
+                    //Show Menu Subject Management
                 }
                 else if (option == 3)
                 {
-
+                    //Show Menu Exams
                    
                 }
                 
@@ -45,16 +46,143 @@ namespace Bloc_5___Pràctica_Troncal_A3_dbContext_v2
         {
             Console.WriteLine("Elige una opción de las siguientes: ");
 
-            Console.WriteLine("1. Añadir alumno.");
-            Console.WriteLine("2. Mostrar alumnos.");
-            Console.WriteLine("3. Añadir subjects a alumno.");
-            Console.WriteLine("4. Muestra alumnos.");
-            Console.WriteLine("5. Modifica datos de los alumnos.");
-            Console.WriteLine("6. Elimina a un alumno.");
-            Console.WriteLine("7. Muestra Asignaturas de un alumno.");
-            Console.WriteLine("8. Muestra Notas de una asignatura de un alumno.");
-            Console.WriteLine("9. Modificar Asignatura");
-            Console.WriteLine("10. Eliminar Asignatura y sus examenes.");
+            Console.WriteLine("1. Gestión de alumnos.");
+            Console.WriteLine("2. Gestión asignaturas.");
+            Console.WriteLine("3. Gestión Notas.");
+            Console.WriteLine("4. Salir de la aplicación.");
+            
+        }
+
+        static void ShowStudentsManagementMenu()
+        {
+            int option = 0;
+            bool looping = true;
+            while (looping)
+            {
+
+                Console.WriteLine("Elige una opción de las siguientes: ");
+
+                Console.WriteLine("1. Crear alumno.");
+                Console.WriteLine("2. Mostrar alumno.");
+                Console.WriteLine("3. Modificar alumno.");
+                Console.WriteLine("4. Borrar alumno.");
+                Console.WriteLine("5. Muestra todos los alumnos.");
+                Console.WriteLine("6. Volver al menu.");
+
+                option = Input.InputInt();
+                if (option == 1) 
+                {
+                    Console.Clear();
+                    Console.WriteLine("Hola");
+                   
+                }
+                else if (option == 2)
+                {
+
+                }
+                else  if (option == 3)
+                {
+
+                }
+                else if (option == 4)
+                {
+
+                }
+                else if (option == 5)
+                {
+
+                }
+                else 
+                {
+                    looping = false;
+                }
+
+            }
+        }
+        static void ShowSubjectsManagementMenu()
+        {
+            int option = 0;
+            bool looping = true;
+            while (looping)
+            {
+                Console.WriteLine("Elige una opción de las siguientes: ");
+
+                Console.WriteLine("1. Crear Asignatura.");
+                Console.WriteLine("2. Mostrar Asignatura.");
+                Console.WriteLine("3. Modificar Asignatura.");
+                Console.WriteLine("4. Borrar Asignatura.");
+                Console.WriteLine("5. Muestra todas las Asignatura de un alumno.");
+                Console.WriteLine("6. Volver al Menú principal.");
+
+                if (option == 1)
+                {
+
+                }
+                else if (option == 2)
+                {
+
+                }
+                else if (option == 3)
+                {
+
+                }
+                else if (option == 4)
+                {
+
+                }
+                else if (option == 5)
+                {
+
+                }
+                else
+                {
+                    looping = false;
+                }
+
+            }
+        }
+        static void ShowExamManagementMenu()
+        {
+            int option = 0;
+            bool looping = true;
+            while (looping)
+            {
+                Console.WriteLine("Elige una opción de las siguientes: ");
+
+                Console.WriteLine("1. Crear Examen.");
+                Console.WriteLine("2. Mostrar Examen.");
+                Console.WriteLine("3. Modificar Examen.");
+                Console.WriteLine("4. Borrar Examen.");
+                Console.WriteLine("5. Muestra todos los Examenes de un alumno.");
+                Console.WriteLine("6. Volver al Menú principal.");
+
+                if (option == 1)
+                {
+                    Console.Clear();
+                    Console.WriteLine("Hola");
+                }
+                else if (option == 2)
+                {
+
+                }
+                else if (option == 3)
+                {
+
+                }
+                else if (option == 4)
+                {
+
+                }
+                else if (option == 5)
+                {
+
+                }
+                else
+                {
+                    looping = false;
+                }
+
+            }
         }
         static void ShowAnalisisMenu()
         {
