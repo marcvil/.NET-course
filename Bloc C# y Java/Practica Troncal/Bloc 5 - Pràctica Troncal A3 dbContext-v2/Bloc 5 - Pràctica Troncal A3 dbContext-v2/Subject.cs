@@ -14,7 +14,7 @@ namespace Bloc_5___Pràctica_Troncal_A3_dbContext_v2
         }
         public Subject(int SubjectCode, string subjectName)
         {
-            this.IdSubject = idSubject;
+            this.SubjectCode = SubjectCode;
             this.SubjectName = subjectName;
 
         }
@@ -79,11 +79,11 @@ namespace Bloc_5___Pràctica_Troncal_A3_dbContext_v2
             //If not, it means that the Id we are checking is used by this subject, so we need to update the info
             if (this.Id == Guid.Empty)
             {
-                //CreateStudent
+                DbContext.CreateSubject(this);
             }
             else
             {
-                //Update
+                DbContext.CreateSubject(this);
             }
             return true;
         }

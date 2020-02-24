@@ -83,14 +83,14 @@ namespace Bloc_5___Pràctica_Troncal_A3_dbContext_v2
         public bool Save()
         {
             //Creo el objeto para guardar los valores de las validaciones
-            var stringvalidation = ValidateSubjectName(this.SubjectName);
+            var stringvalidation = ValidateFinalMark(this.FinalMark.ToString());
             if (stringvalidation.ValidationSuccesful == false)
             {
                 return false;
             }
 
-            var intvalidation = ValidateIdSubject(this.SubjectCode);
-            if (intvalidation.ValidationSuccesful == false)
+            var datevalidation = ValidateDateTime(this.ExamDate.Year, this.ExamDate.Month,this.ExamDate.Day);
+            if (datevalidation.ValidationSuccesful == false)
             {
                 return false;
             }
@@ -99,15 +99,15 @@ namespace Bloc_5___Pràctica_Troncal_A3_dbContext_v2
             //If not, it means that the Id we are checking is used by this subject, so we need to update the info
             if (this.Id == Guid.Empty)
             {
-                //CreateStudent
+                DbContext.CreateExam(this);
             }
             else
             {
-                //Update
+                DbContext.UpdateExam(this);
             }
             return true;
         }
     }
 }
-}
+
 

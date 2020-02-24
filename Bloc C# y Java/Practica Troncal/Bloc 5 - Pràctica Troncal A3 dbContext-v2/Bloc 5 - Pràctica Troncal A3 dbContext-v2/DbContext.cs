@@ -16,21 +16,21 @@ namespace Bloc_5___Pràctica_Troncal_A3_dbContext_v2
         #region CRUD Operations
 
         #region Student CRUD
-        public void CreateStudent() 
+        public static bool CreateStudent(Student student) 
         {
-        
+            return true;
         }
         public void ReadStudent()
         {
 
         }
-        public void UpdateStudent()
+        public static bool UpdateStudent(Student student)
         {
-
+            return true;
         }
-        public void DeleteStudent()
+        public static bool DeleteStudent(Student student)
         {
-
+            return true;
         }
         #endregion
 
@@ -79,21 +79,49 @@ namespace Bloc_5___Pràctica_Troncal_A3_dbContext_v2
         #endregion
 
         #region Exam CRUD
-        public void CreateExam()
+        public static bool CreateExam(Exam exam)
         {
+            if (exam.Id != Guid.Empty)
+            {
+                return false;
+            }
 
+            exam.Id = Guid.NewGuid();
+            examList.Add(exam.Id, exam);
+            return true;
         }
         public void ReadExam()
         {
-
+            // Solo tengo atributos finalMark y ExamDate, ninguno de ellos seria llave primaria en la base de datos para identificarlo inequívocamente
+            // Puedo añadir variables de subject y student a Exam, aunque creo que una vez hechos los repositories podremos relacionarlo sin
+            //hacer cluster de variables a lo loco
+            // return examList.Values.FirstOrDefault(x => x.Name == subjectName);
         }
-        public void UpdateExam()
+        public static bool UpdateExam(Exam exam)
         {
+            if (exam.Id != Guid.Empty && DbContext.examList.ContainsKey(exam.Id))
+            {
+                Exam tempexam = examList[exam.Id];
+                if (exam != tempexam)
+                {
+                    examList[exam.Id] = exam;
 
+                }
+            }
+            else
+            {
+                CreateExam(exam);
+            }
+            return true;
         }
-        public void DeleteExam()
+        public static bool DeleteExam(Exam exam)
         {
-
+            if (DbContext.examList.ContainsKey(exam.Id))
+            {
+                subjectList.Remove(exam.Id);
+                return true;
+            }
+            else return false;
         }
         #endregion
 

@@ -73,7 +73,7 @@ namespace Bloc_5___Pràctica_Troncal_A3_dbContext_v2
                 if (option == 1) 
                 {
                     Console.Clear();
-                    //TODO CreateStudent()
+                    
                    
                 }
                 else if (option == 2)

@@ -1,0 +1,4 @@
+C:\Users\Marc\Desktop\Marc\ItAcademy\.NET-course\Bloc C# y Java\Practica Troncal\Bloc 5 - Pràctica Troncal A3 dbContext-v2\Bloc 5 - Pràctica Troncal A3 dbContext-v2\obj\Debug\netcoreapp3.0\Bloc 5 - Pràctica Troncal A3 dbContext-v2.AssemblyInfoInputs.cache
+C:\Users\Marc\Desktop\Marc\ItAcademy\.NET-course\Bloc C# y Java\Practica Troncal\Bloc 5 - Pràctica Troncal A3 dbContext-v2\Bloc 5 - Pràctica Troncal A3 dbContext-v2\obj\Debug\netcoreapp3.0\Bloc 5 - Pràctica Troncal A3 dbContext-v2.AssemblyInfo.cs
+C:\Users\Marc\Desktop\Marc\ItAcademy\.NET-course\Bloc C# y Java\Practica Troncal\Bloc 5 - Pràctica Troncal A3 dbContext-v2\Bloc 5 - Pràctica Troncal A3 dbContext-v2\obj\Debug\netcoreapp3.0\Bloc 5 - Pràctica Troncal A3 dbContext-v2.dll
+C:\Users\Marc\Desktop\Marc\ItAcademy\.NET-course\Bloc C# y Java\Practica Troncal\Bloc 5 - Pràctica Troncal A3 dbContext-v2\Bloc 5 - Pràctica Troncal A3 dbContext-v2\obj\Debug\netcoreapp3.0\Bloc 5 - Pràctica Troncal A3 dbContext-v2.pdb
