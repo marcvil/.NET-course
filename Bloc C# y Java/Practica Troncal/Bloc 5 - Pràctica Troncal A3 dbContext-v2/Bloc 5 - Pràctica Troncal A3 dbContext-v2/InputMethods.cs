@@ -5,9 +5,6 @@ namespace Bloc_5___Pràctica_Troncal_A3_dbContext_v2
 {
     public class Input
     {
-       
-
-       
         public static int InputInt()
         {
             int input;
@@ -27,10 +24,18 @@ namespace Bloc_5___Pràctica_Troncal_A3_dbContext_v2
             }
             return 0;
         }
-        public static float InputFloat()
+        public static double InputDouble()
         {
-            float input = float.Parse(Console.ReadLine());
-
+            double input;
+            bool inputvalidated = double.TryParse(Console.ReadLine(), out input);
+            if (inputvalidated == true)
+            {
+                return input;
+            }
+            else
+            {
+                return
+            }
 
             return input;
         }
